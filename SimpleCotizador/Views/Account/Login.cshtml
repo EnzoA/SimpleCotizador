@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <title>Simple Cotizador</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/signin.css" rel="stylesheet" />
+</head>
+
+<body class="text-center">
+    <form class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal" style="margin-top:0px;margin-bottom:16px">Por favor ingrese</h1>
+        <label for="usuario" class="sr-only">Nombre de usuario</label>
+        <input type="text" id="usuario" class="form-control" placeholder="Nombre de usuario" required="" autofocus=""
+               oninvalid="this.setCustomValidity('Por favor, ingrese su nombre de usuario')"
+               oninput="this.setCustomValidity('')">
+        <label for="contrasenia" class="sr-only">Contrase&ntilde;a</label>
+        <input type="password" id="contrasenia" class="form-control" placeholder="Contrase&ntilde;a" required=""
+               oninvalid="this.setCustomValidity('Por favor, ingrese su contraseña')"
+               oninput="this.setCustomValidity('')">
+        <div class="checkbox mb-3" style="margin-top:0px;margin-bottom:16px">
+            <label style="margin-bottom:8px">
+                <input type="checkbox" value="recordarme"> Recordarme
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+        <p class="mt-5 mb-3 text-muted" style="margin-top:48px;margin-bottom:16px">© 2017-2018</p>
+    </form>
+</body>
+</html>
