@@ -1,8 +1,27 @@
-﻿var gulp = require("gulp"),
-    sass = require("gulp-sass");
+﻿"use strict";
 
-//gulp.task("sass", function () {
-//    return gulp.src('~/Styles/_root.scss')
-//               .pipe(sass())
-//               .pipe(gulp.dest('wwwroot/css'));
-//});
+var gulp = require("gulp");
+
+var dependencias = {
+    "angular": {
+        "angular.js": "",
+        "angular.js.map": "",
+        "bower.json": "",
+        "package.json": "",
+        "angular-csp.css": "",
+        "index.js": ""
+    }
+};
+
+gulp.task("scripts", function () {
+    var streams = [];
+
+    for (var propiedad in dependencias) {
+        for (var item in dependencias[propiedad]) {
+            streams.push(gulp.src("node_modules/" + propiedad + "/" + item)
+                   .pipe(gulp.dest("wwwroot/lib/" + propiedad + "/" + dependencias[propiedad][item])));
+        }
+    }
+
+    return merge(streams);
+});
