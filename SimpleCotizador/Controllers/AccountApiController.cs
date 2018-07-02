@@ -65,6 +65,14 @@ namespace SimpleCotizador.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("SimpleCotizadorApi/Account/Logout")]
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok();
+        }
+
         #endregion
     }
 }
