@@ -35,7 +35,7 @@
             };
             self.$http(requerimiento)
                 .then(function successCallback(response) {
-                    self.$window.location.href = '/Home/Index?usuario=' + self.usuario;
+                    self.$window.location.href = '/Home/Index';
                     self.enProgreso = false;
                 }, function errorCallback(response) {
                     self.error = true;
