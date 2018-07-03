@@ -1,1 +1,14 @@
-﻿<h1 style="color:red;margin-top:150px">{{mensaje}}</h1>
+﻿<h1>Configurar Cotizaci&oacute;n</h1>
+<div>
+    <span>Cliente</span>
+    <input type="text" ng-model="vm.nombreCliente" style="width:500px;" />
+</div>
+<div>
+    <span>Tipo Seguro</span>
+    <input type="text" ng-model="vm.tipoSeguro" style="width:500px;" />
+</div>
+<div>
+    <span>Fecha Vencimiento</span>
+    <input type="text" ng-model="vm.fechaVencimiento" disabled style="width:500px;" />
+</div>
+<a href="ConfirmacionCotizacion" class="btn btn-default">Siguiente >></a>

@@ -6,17 +6,20 @@
             $routeProvider
                 .when('/BusquedaCotizaciones', { templateUrl: '/html/BusquedaCotizaciones.html', controller: 'busquedaCotizacionesController' })
                 .when('/ConfiguracionCotizacion', { templateUrl: '/html/ConfiguracionCotizacion.html', controller: 'configuracionCotizacionController' })
+                .when('/ConfirmacionCotizacion', { templateUrl: '/html/ConfirmacionCotizacion.html', controller: 'confirmacionCotizacionController' })
                 .otherwise({ redirectTo: '/BusquedaCotizaciones' });
             $locationProvider.html5Mode(true);
         }])
-        .controller('menuController', ['$scope', '$http', function ($scope, $http, $window) {
-            $scope.vm = new MenuViewModel($http);
+        .controller('menuController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+            $scope.vm = new MenuViewModel($http, $window);
         }])
-        .controller('busquedaCotizacionesController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
-            $scope.vm = new BusquedaCotizacionesViewModel($http, $window);
-            $scope.mensaje = 'Busqueda de cotizaciones';
+        .controller('busquedaCotizacionesController', ['$scope', '$http', function ($scope, $http) {
+            $scope.vm = new BusquedaCotizacionesViewModel($http);
         }])
         .controller('configuracionCotizacionController', ['$scope', function ($scope) {
-            $scope.mensaje = 'Configuracion de cotizacion'
+            $scope.vm = new ConfiguracionCotizacionViewModel();
+        }])
+        .controller('confirmacionCotizacionController', ['$scope', function ($scope) {
+            $scope.vm = new ConfirmacionCotizacionViewModel();
         }]);
 }();
