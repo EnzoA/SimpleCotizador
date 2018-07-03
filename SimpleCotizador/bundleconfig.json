@@ -3,29 +3,41 @@
 [
   {
     "outputFileName": "wwwroot/css/base-styles.css",
-    // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
       "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css"
-    ]
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
   },
   {
     "outputFileName": "wwwroot/js/base-scripts.js",
     "inputFiles": [
       "wwwroot/lib/angular/angular.js",
-      "wwwroot/lib/angular-route/angular-route.js",
       "wwwroot/lib/jquery/dist/jquery.js",
       "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "wwwroot/lib/jquery-validation/dist/additional-methods.js",
       "wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js",
       "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
     ],
-    // Optionally specify minification options
     "minify": {
       "enabled": true,
       "renameLocals": true
     },
-    // Optionally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/angular-extensions.js",
+    "inputFiles": [
+      "wwwroot/lib/angular-route/angular-route.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
     "sourceMap": false
   }
 ]

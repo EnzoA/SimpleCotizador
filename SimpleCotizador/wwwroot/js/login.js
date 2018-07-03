@@ -1,6 +1,7 @@
 ﻿"use strict";
 +function () {
-    angular.module('loginApp', [])
+    angular
+        .module('loginApp', [])
         .controller('loginController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
             $scope.vm = new LoginViewModel($http, $window);
         }]);

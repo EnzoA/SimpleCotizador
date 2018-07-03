@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
-<html ng-app="indexApp">
+<html lang="es" ng-app="indexApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/Home/Index/">
     <title>SimpleCotizador</title>
-    <script src="~/js/base-scripts.js"></script>
-    <link href="~/css/base-styles.css" rel="stylesheet" />
+    <script src="~/js/base-scripts.min.js"></script>
+    <link href="~/css/base-styles.min.css" rel="stylesheet" />
+    <script src="~/js/angular-extensions.min.js"></script>
 </head>
 <body>
     <div ng-controller="menuController" class="container navbar navbar-inverse navbar-fixed-top" style="width:100%">
@@ -30,6 +31,7 @@
         </footer>
     </div>
     <script src="~/js/menu-view-model.js"></script>
+    <script src="~/js/busqueda-cotizaciones-view-model.js"></script>
     <script src="~/js/index.js"></script>
 </body>
 </html>

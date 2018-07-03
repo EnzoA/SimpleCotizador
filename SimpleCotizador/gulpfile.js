@@ -12,7 +12,7 @@ var dependencias = {
         "index.js": ""
     },
     "angular-route": {
-        "angular-route.js": "",
+        "angular-route.js": ""
     }
 };
 

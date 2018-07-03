@@ -12,7 +12,8 @@
         .controller('menuController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
             $scope.vm = new MenuViewModel($http, $window);
         }])
-        .controller('busquedaCotizacionesController', ['$scope', function ($scope) {
+        .controller('busquedaCotizacionesController', ['$scope', '$http', function ($scope, $http) {
+            $scope.vm = new BusquedaCotizacionesViewModel($http);
             $scope.mensaje = 'Busqueda de cotizaciones';
         }])
         .controller('configuracionCotizacionController', ['$scope', function ($scope) {

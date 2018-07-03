@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleCotizador.Models;
 using SimpleCotizador.Persistency;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace SimpleCotizador
 {
@@ -31,6 +33,22 @@ namespace SimpleCotizador
                     .AddDefaultTokenProviders();
             
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Events.OnRedirectToLogin = context =>
+                {
+                    if (context.Request.Path.StartsWithSegments("/SimpleCotizadorApi") && context.Response.StatusCode == (int)HttpStatusCode.OK)
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    }
+                    else
+                    {
+                        context.Response.Redirect(context.RedirectUri);
+                    }
+                    return Task.FromResult(0);
+                };
+            });
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
