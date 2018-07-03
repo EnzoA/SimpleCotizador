@@ -13,6 +13,9 @@ var dependencias = {
     },
     "angular-route": {
         "angular-route.js": ""
+    },
+    "angular-smart-table": {
+        "dist/smart-table.js": ""
     }
 };
 

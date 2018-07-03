@@ -24,6 +24,7 @@ namespace SimpleCotizador.Controllers
                                                         .Where(c => string.IsNullOrEmpty(filtro) ||
                                                                     c.NombreCliente.StartsWith(filtro) ||
                                                                     c.NumeroPoliza.StartsWith(filtro))
+                                                        .OrderBy(c => c.NumeroPoliza)
                                                         .ToList();
 
             return Ok(cotizaciones);

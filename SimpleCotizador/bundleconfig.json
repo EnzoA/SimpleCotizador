@@ -32,7 +32,8 @@
   {
     "outputFileName": "wwwroot/js/angular-extensions.js",
     "inputFiles": [
-      "wwwroot/lib/angular-route/angular-route.js"
+      "wwwroot/lib/angular-route/angular-route.js",
+      "wwwroot/lib/angular-smart-table/smart-table.js"
     ],
     "minify": {
       "enabled": true,

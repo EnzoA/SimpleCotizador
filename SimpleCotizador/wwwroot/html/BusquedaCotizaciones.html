@@ -1,1 +1,26 @@
-﻿<button type="button" ng-click="vm.buscarCotizaciones()">Obtener cotizaciones</button>
+﻿<span>Buscar</span>
+<br />
+<input type="text" ng-model="vm.filtro" ng-blur="vm.buscarCotizaciones()" ng-keydown="vm.procesarKeyPress($event)" style="width:500px;" />
+<a href="ConfiguracionCotizacion" class="btn btn-default">Crear</a>
+<table st-table="vm.cotizaciones" class="table table-striped" border="1">
+    <thead>
+        <tr>
+            <th>Número póliza</th>
+            <th>Cliente</th>
+            <th>Tipo de Seguro</th>
+            <th>Forma de Pago</th>
+            <th>Fecha Vencimiento</th>
+            <th>Fecha Cotización</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="cotizacion in vm.cotizaciones">
+            <td>{{cotizacion.numeroPoliza}}</td>
+            <td>{{cotizacion.nombreCliente}}</td>
+            <td>{{cotizacion.tipoSeguro}}</td>
+            <td>{{cotizacion.formaPago}}</td>
+            <td>{{cotizacion.fechaVencimiento}}</td>
+            <td>{{cotizacion.fechaCotizacion}}</td>
+        </tr>
+    </tbody>
+</table>
