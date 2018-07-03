@@ -6,6 +6,7 @@
     "gulp": "^3.9.1"
   },
   "dependencies": {
-    "angular": "1.6.x"
+    "angular": "1.6.x",
+    "angular-route": "^1.7.2"
   }
 }

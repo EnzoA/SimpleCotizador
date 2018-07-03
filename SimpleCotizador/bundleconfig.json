@@ -13,6 +13,7 @@
     "outputFileName": "wwwroot/js/base-scripts.js",
     "inputFiles": [
       "wwwroot/lib/angular/angular.js",
+      "wwwroot/lib/angular-route/angular-route.js",
       "wwwroot/lib/jquery/dist/jquery.js",
       "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "wwwroot/lib/jquery-validation/dist/additional-methods.js",

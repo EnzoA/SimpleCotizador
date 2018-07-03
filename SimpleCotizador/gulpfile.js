@@ -10,6 +10,9 @@ var dependencias = {
         "package.json": "",
         "angular-csp.css": "",
         "index.js": ""
+    },
+    "angular-route": {
+        "angular-route.js": "",
     }
 };
 
