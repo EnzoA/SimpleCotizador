@@ -1,10 +1,10 @@
 ﻿function ConfirmacionCotizacionViewModel($http, nuevaCotizacionState) {
     this.$http = $http;
     this.nuevaCotizacionState = nuevaCotizacionState;
-    this.esPolizaActiva = true;
-    this.fechaCotizacion = this.obtenerFechaUTC0();
-    this.formaPago = null;
-    this.numeroPoliza = this.generarGUID();
+    this.fechaCotizacion = nuevaCotizacionState.fechaCotizacion ? nuevaCotizacionState.fechaCotizacion : this.obtenerFechaUTC0();
+    this.formaPago = nuevaCotizacionState.formaPago ? nuevaCotizacionState.formaPago : null;
+    this.numeroPoliza = nuevaCotizacionState.numeroPoliza ? nuevaCotizacionState.numeroPoliza : this.generarGUID();
+    this.esPolizaActiva = nuevaCotizacionState.esPolizaActiva;
 }
 
 ConfirmacionCotizacionViewModel.prototype = {
@@ -43,5 +43,11 @@ ConfirmacionCotizacionViewModel.prototype = {
             return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
         }
         return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+    },
+    navegarAConfiguracionCotizacion: function () {
+        this.nuevaCotizacionState.fechaCotizacion = this.fechaCotizacion;
+        this.nuevaCotizacionState.formaPago = this.formaPago;
+        this.nuevaCotizacionState.numeroPoliza = this.numeroPoliza;
+        this.nuevaCotizacionState.esPolizaActiva = this.esPolizaActiva;
     }
 };
