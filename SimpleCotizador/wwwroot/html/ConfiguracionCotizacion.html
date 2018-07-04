@@ -1,14 +1,18 @@
-﻿<h1>Configurar Cotizaci&oacute;n</h1>
-<div>
-    <span>Cliente</span>
-    <input type="text" ng-model="vm.nombreCliente" style="width:500px;" />
-</div>
-<div>
-    <span>Tipo Seguro</span>
-    <input type="text" ng-model="vm.tipoSeguro" style="width:500px;" />
-</div>
-<div>
-    <span>Fecha Vencimiento</span>
-    <input type="text" ng-model="vm.fechaVencimiento" disabled style="width:500px;" />
-</div>
-<a href="ConfirmacionCotizacion" ng-click="vm.navegarAConfirmacionCotizacion()" class="btn btn-default">Siguiente >></a>
+﻿<h2 class="text-center" style="padding-bottom:50px">Configurar Cotizaci&oacute;n</h2>
+<form>
+    <div class="form-inline" style="padding-bottom:50px;">
+        <label for="nombreCliente" class="col-xs-6" style="text-align:end">Cliente</label>
+        <input type="text" id="nombreCliente" ng-model="vm.nombreCliente" class="form-control input-sm col-xs-6" autocomplete="off" />
+    </div>
+    <div class="form-inline" style="padding-bottom:50px;">
+        <label for="tipoSeguro" class="col-xs-6" style="text-align:end">Tipo Seguro</label>
+        <input type="text" id="tipoSeguro" ng-model="vm.tipoSeguro" class="form-control input-sm col-xs-6" autocomplete="off" />
+    </div>
+    <div class="form-inline" style="padding-bottom:50px;">
+        <label for="fechaVencimiento" class="col-xs-6" style="text-align:end">Fecha Vencimiento</label>
+        <input type="text" id="fechaVencimiento" ng-model="vm.fechaVencimiento | date : 'dd/MM/yyyy'" disabled class="form-control input-sm col-xs-6" autocomplete="off" />
+    </div>
+    <div class="form-group col-xs-2 col-xs-offset-5" style="padding-top:20px">
+        <a href="ConfirmacionCotizacion" ng-click="vm.navegarAConfirmacionCotizacion()" class="btn btn-primary form-control">Siguiente</a>
+    </div>
+</form>
