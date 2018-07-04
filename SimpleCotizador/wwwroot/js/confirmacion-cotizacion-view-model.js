@@ -1,5 +1,6 @@
-﻿function ConfirmacionCotizacionViewModel($http, nuevaCotizacionState) {
+﻿function ConfirmacionCotizacionViewModel($http, $window, nuevaCotizacionState) {
     this.$http = $http;
+    this.$window = $window;
     this.nuevaCotizacionState = nuevaCotizacionState;
     this.fechaCotizacion = nuevaCotizacionState.fechaCotizacion ? nuevaCotizacionState.fechaCotizacion : this.obtenerFechaUTC0();
     this.formaPago = nuevaCotizacionState.formaPago ? nuevaCotizacionState.formaPago : null;
@@ -9,6 +10,7 @@
 
 ConfirmacionCotizacionViewModel.prototype = {
     cotizar: function () {
+        var self = this;
         var requerimiento = {
             method: 'POST',
             url: 'http://localhost:62283/simplecotizadorapi/cotizaciones',
@@ -29,6 +31,7 @@ ConfirmacionCotizacionViewModel.prototype = {
         this.$http(requerimiento)
             .then(function successCallback(response) {
                 alert('Alta exitosa!');
+                self.$window.location.href = 'BusquedaCotizaciones';
             }, function errorCallback(response) {
                 alert('Error!');
             });

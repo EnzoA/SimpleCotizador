@@ -22,10 +22,11 @@ namespace SimpleCotizador.Controllers
 
         [HttpGet]
         [Route("SimpleCotizadorApi/Cotizaciones")]
-        public IActionResult GetCotizaciones(string filtro)
+        public IActionResult GetCotizaciones(string filtro, bool mostrarInactivas = false)
         {
             var cotizaciones = _simpleCotizadorDbContext.Cotizaciones
-                                                        .Where(c => string.IsNullOrEmpty(filtro) ||
+                                                        .Where(c => (mostrarInactivas || c.Activa) &&
+                                                                    string.IsNullOrEmpty(filtro) ||
                                                                     c.NombreCliente.StartsWith(filtro) ||
                                                                     c.NumeroPoliza.StartsWith(filtro))
                                                         .OrderBy(c => c.NumeroPoliza)
