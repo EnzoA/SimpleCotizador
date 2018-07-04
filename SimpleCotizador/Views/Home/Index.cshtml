@@ -13,14 +13,21 @@
     <div ng-controller="menuController" class="container navbar navbar-inverse navbar-fixed-top" style="width:100%">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> @ViewBag.Usuario</p></li>
+                <li>
+                    <a href="BusquedaCotizaciones">
+                        <span class="glyphicon glyphicon-home"></span> B&uacute;squeda de cotizaciones
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" ng-click="vm.salir()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> @ViewBag.Usuario</p></li>
+            </ul>
         </div>
     </div>
-    <div class="container body-content" style="margin-top:100px">
+    <div class="container body-content col-xs-10 col-xs-offset-1" style="margin-top:100px">
         <ng-view></ng-view>
         <hr />
         <footer>

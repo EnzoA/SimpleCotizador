@@ -1,27 +1,38 @@
-﻿<h2>Cotizaciones</h2>
-<span>Buscar</span>
-<br />
-<input type="text" ng-model="vm.filtro" ng-blur="vm.buscarCotizaciones()" ng-keydown="vm.procesarKeyPress($event)" style="width:500px;" />
-<a href="ConfiguracionCotizacion" class="btn btn-default">Crear</a>
-<table st-table="vm.cotizaciones" class="table table-striped" border="1">
-    <thead>
-        <tr>
-            <th>Número póliza</th>
-            <th>Cliente</th>
-            <th>Tipo de Seguro</th>
-            <th>Forma de Pago</th>
-            <th>Fecha Vencimiento</th>
-            <th>Fecha Cotización</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="cotizacion in vm.cotizaciones">
-            <td>{{cotizacion.numeroPoliza}}</td>
-            <td>{{cotizacion.nombreCliente}}</td>
-            <td>{{cotizacion.tipoSeguro}}</td>
-            <td>{{cotizacion.formaPago}}</td>
-            <td>{{cotizacion.fechaVencimiento}}</td>
-            <td>{{cotizacion.fechaCotizacion}}</td>
-        </tr>
-    </tbody>
-</table>
+﻿<h2 style="padding-bottom:50px">Cotizaciones</h2>
+<form>
+    <div class="form-group">
+        <label for="filtro">Buscar</label>
+        <div class="form-inline" style="padding:0 0 20px 0">
+            <input type="text" id="filtro" ng-model="vm.filtro" ng-blur="vm.buscarCotizaciones()" ng-keydown="vm.procesarKeyPress($event)"
+                   class="form-control input-lg" autocomplete="off" />
+            <a href="ConfiguracionCotizacion" role="button" class="btn btn-primary form-control" style="width:100px;margin:0 0 0 20px">Crear</a>
+        </div>
+    </div>
+    <table st-table="vm.cotizaciones" class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>Número de póliza</th>
+                <th>Cliente</th>
+                <th>Tipo de Seguro</th>
+                <th>Forma de Pago</th>
+                <th>Fecha de Vencimiento</th>
+                <th>Fecha de Cotización</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-hide="vm.cotizaciones.length">
+                <td colspan="6">
+                    <span style="font-style:italic;display:block;text-align:center">Sin resultados</span>
+                </td>
+            </tr>
+            <tr ng-show="vm.cotizaciones.length" ng-repeat="cotizacion in vm.cotizaciones">
+                <td>{{cotizacion.numeroPoliza}}</td>
+                <td>{{cotizacion.nombreCliente}}</td>
+                <td>{{cotizacion.tipoSeguro}}</td>
+                <td>{{cotizacion.formaPago}}</td>
+                <td>{{cotizacion.fechaVencimiento | date : 'dd/MM/yyyy'}}</td>
+                <td>{{cotizacion.fechaCotizacion | date : 'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</form>
