@@ -1,1 +1,22 @@
 ﻿<h1>Confirmar Cotización</h1>
+<div>
+    <span>Fecha Cotización</span>
+    <input type="date" ng-model="vm.fechaCotizacion" />
+</div>
+<div>
+    <span>Forma Pago</span>
+    <select ng-model="vm.formaPago">
+        <option value="">Seleccione</option>
+        <option>Efectivo</option>
+        <option>Tarjeta</option>
+        <option>Débito</option>
+    </select>
+</div>
+<div>
+    <span>Número Póliza</span>
+    <input type="text" disabled />
+</div>
+<div>
+    <input type="checkbox" ng-checked="vm.esPolizaActiva"> Activa
+</div>
+<button type="button">Cotizar</button>

@@ -16,10 +16,17 @@
         .controller('busquedaCotizacionesController', ['$scope', '$http', function ($scope, $http) {
             $scope.vm = new BusquedaCotizacionesViewModel($http);
         }])
-        .controller('configuracionCotizacionController', ['$scope', function ($scope) {
-            $scope.vm = new ConfiguracionCotizacionViewModel();
+        .controller('configuracionCotizacionController', ['$scope', 'nuevaCotizacionState', function ($scope, nuevaCotizacionState) {
+            $scope.vm = new ConfiguracionCotizacionViewModel(nuevaCotizacionState);
         }])
-        .controller('confirmacionCotizacionController', ['$scope', function ($scope) {
-            $scope.vm = new ConfirmacionCotizacionViewModel();
-        }]);
+        .controller('confirmacionCotizacionController', ['$scope', ,'$http', 'nuevaCotizacionState', function ($scope, $http, nuevaCotizacionState) {
+            $scope.vm = new ConfirmacionCotizacionViewModel($http, nuevaCotizacionState);
+        }])
+        .factory('nuevaCotizacionState', function () {
+            return {
+                nombreCliente: '',
+                tipoSeguro: '',
+                fechaVencimiento: ''
+            };
+        });
 }();
