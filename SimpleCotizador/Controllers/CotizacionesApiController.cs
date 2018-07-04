@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SimpleCotizador.DTOs;
+using SimpleCotizador.Models;
 using SimpleCotizador.Persistency;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SimpleCotizador.Controllers
 {
@@ -28,6 +32,33 @@ namespace SimpleCotizador.Controllers
                                                         .ToList();
 
             return Ok(cotizaciones);
+        }
+
+        [HttpPost]
+        [Route("SimpleCotizadorApi/Cotizaciones")]
+        public async Task<IActionResult> AltaCotizacionAsync([FromBody] AltaCotizacionRequest altaCotizacionRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                var cotizacion = await _simpleCotizadorDbContext.Cotizaciones.AddAsync(new Cotizacion
+                {
+                    NombreCliente = altaCotizacionRequest.NombreCliente,
+                    TipoSeguro = altaCotizacionRequest.TipoSeguro,
+                    FormaPago = altaCotizacionRequest.FormaPago,
+                    FechaVencimiento = altaCotizacionRequest.FechaVencimiento,
+                    FechaCotizacion = altaCotizacionRequest.FechaCotizacion,
+                    Activa = altaCotizacionRequest.Activa,
+                    NumeroPoliza = altaCotizacionRequest.NumeroPoliza
+                });
+
+                await _simpleCotizadorDbContext.SaveChangesAsync();
+
+                return Ok();
+            }
         }
     }
 }

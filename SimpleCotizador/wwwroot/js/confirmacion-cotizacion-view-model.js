@@ -2,14 +2,13 @@
     this.$http = $http;
     this.nuevaCotizacionState = nuevaCotizacionState;
     this.esPolizaActiva = true;
-    var hoy = new Date();
-    var offset = hoy.getTimezoneOffset();
-    this.fechaCotizacion = new Date(hoy.valueOf() + offset * 60000);
+    this.fechaCotizacion = this.obtenerFechaUTC0();
     this.formaPago = null;
+    this.numeroPoliza = this.generarGUID();
+}
 
-    var self = this;
-
-    this.cotizar = function () {
+ConfirmacionCotizacionViewModel.prototype = {
+    cotizar: function () {
         var requerimiento = {
             method: 'POST',
             url: 'http://localhost:62283/simplecotizadorapi/cotizaciones',
@@ -18,19 +17,31 @@
                 'Accepts': 'application/json'
             },
             data: {
-                'nombreCliente': self.nuevaCotizacionState.nombreCliente,
-                'tipoSeguro': self.nuevaCotizacionState.tipoSeguro,
-                'formaPago': self.formaPago,
-                'fechaVencimiento': self.nuevaCotizacionState.fechaVencimiento,
-                'fechaCotizacion': self.fechaCotizacion,
-                'activa': self.esPolizaActiva
-            };
+                'nombreCliente': this.nuevaCotizacionState.nombreCliente,
+                'tipoSeguro': this.nuevaCotizacionState.tipoSeguro,
+                'formaPago': this.formaPago,
+                'fechaVencimiento': this.nuevaCotizacionState.fechaVencimiento,
+                'fechaCotizacion': this.fechaCotizacion,
+                'activa': this.esPolizaActiva,
+                'numeroPoliza': this.numeroPoliza
+            }
         };
-        self.$http(requerimiento)
+        this.$http(requerimiento)
             .then(function successCallback(response) {
-                
+                alert('Alta exitosa!');
             }, function errorCallback(response) {
-                
+                alert('Error!');
             });
-    };
-}
+    },
+    obtenerFechaUTC0: function () {
+        var hoy = new Date();
+        var offset = hoy.getTimezoneOffset();
+        return new Date(hoy.valueOf() + offset * 60000);
+    },
+    generarGUID: function () {
+        function S4() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+    }
+};

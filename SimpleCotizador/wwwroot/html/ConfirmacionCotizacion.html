@@ -14,9 +14,9 @@
 </div>
 <div>
     <span>Número Póliza</span>
-    <input type="text" disabled />
+    <input type="text" ng-model="vm.numeroPoliza" disabled />
 </div>
 <div>
     <input type="checkbox" ng-checked="vm.esPolizaActiva"> Activa
 </div>
-<button type="button">Cotizar</button>
+<button type="button" ng-click="vm.cotizar()">Cotizar</button>

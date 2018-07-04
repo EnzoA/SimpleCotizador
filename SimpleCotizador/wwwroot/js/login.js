@@ -14,13 +14,14 @@
         this.enProgreso = false;
         this.error = false;
         this.mensajeError = '';
+    }
 
-        var self = this;
-
-        this.login = function () {
-            self.error = false;
-            self.mensajeError = '';
-            self.enProgreso = true;
+    LoginViewModel.prototype = {
+        login: function () {
+            this.error = false;
+            this.mensajeError = '';
+            this.enProgreso = true;
+            var self = this;
 
             var requerimiento = {
                 method: 'POST',
@@ -30,11 +31,11 @@
                     'Accepts': 'application/json'
                 },
                 data: {
-                    'usuario': self.usuario,
-                    'contrasenia': self.contrasenia
+                    'usuario': this.usuario,
+                    'contrasenia': this.contrasenia
                 }
             };
-            self.$http(requerimiento)
+            this.$http(requerimiento)
                 .then(function successCallback(response) {
                     self.$window.location.href = '/Home/Index';
                 }, function errorCallback(response) {
@@ -48,10 +49,9 @@
                         self.mensajeError = 'Ha ocurrido un error';
                     }
                 });
-        };
-
-        this.textChange = function () {
-            self.error = false;
-        };
-    }
+        },
+        textChange: function () {
+            this.error = false;
+        }
+    };
 }();

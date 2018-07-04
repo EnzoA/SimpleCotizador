@@ -19,7 +19,7 @@
         .controller('configuracionCotizacionController', ['$scope', 'nuevaCotizacionState', function ($scope, nuevaCotizacionState) {
             $scope.vm = new ConfiguracionCotizacionViewModel(nuevaCotizacionState);
         }])
-        .controller('confirmacionCotizacionController', ['$scope', ,'$http', 'nuevaCotizacionState', function ($scope, $http, nuevaCotizacionState) {
+        .controller('confirmacionCotizacionController', ['$scope','$http', 'nuevaCotizacionState', function ($scope, $http, nuevaCotizacionState) {
             $scope.vm = new ConfirmacionCotizacionViewModel($http, nuevaCotizacionState);
         }])
         .factory('nuevaCotizacionState', function () {
