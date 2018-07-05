@@ -1,33 +1,38 @@
 ﻿<h2 class="text-center" style="padding-bottom:50px">Confirmar Cotización</h2>
 <form class="container">
-    <div class="form-inline row">
+    <div class="form-inline row form-row-s">
         <label for="fechaCotizacion" class="col-xs-6" style="text-align:end">Fecha Cotización</label>
-        <datepicker id="fechaCotizacion" class="col-xs-6" style="width:auto;float:none;padding-left:0">
-            <input type="text" ng-model="vm.fechaCotizacion" class="form-control input-sm" />
+        <datepicker id="fechaCotizacion" selector="form-control" date-format="dd/MM/yyyy" date-set="{{vm.fechaCotizacion.toString()}}" class="col-xs-6" style="width:auto;float:none;padding-left:0">
+            <div class="input-group">
+                <input type="text" date-time class="form-control form-element angular-datepicker-input" placeholder="Seleccione una fecha" style="cursor:pointer" />
+                <span class="input-group-addon" style="cursor:pointer">
+                    <i class="glyphicon-calendar"></i>
+                </span>
+            </div>
         </datepicker>
     </div>
-    <div class="form-inline row">
+    <div class="form-inline row form-row-s">
         <label for="formaPago" class="col-xs-6" style="text-align:end">Forma Pago</label>
-        <select id="formaPago" ng-model="vm.formaPago" class="form-control custom-select mr-sm-2 col-xs-6">
+        <select id="formaPago" ng-model="vm.formaPago" class="form-control custom-select mr-sm-2 col-xs-6 form-element">
             <option value="">Seleccione</option>
             <option>Efectivo</option>
             <option>Tarjeta</option>
             <option>Débito</option>
         </select>
     </div>
-    <div class="form-inline row">
+    <div class="form-inline row form-row-s">
         <label for="numeroPoliza" class="col-xs-6" style="text-align:end">Número Póliza</label>
-        <input id="numeroPoliza" type="text" ng-model="vm.numeroPoliza" readonly class="form-control input-sm col-xs-6" />
+        <input id="numeroPoliza" type="text" ng-model="vm.numeroPoliza" readonly class="form-control input-sm col-xs-6 form-element" />
     </div>
-    <div class="form-check row">
-        <label for="esPolizaActiva" class="form-check-label col-xs-6" style="text-align:end">Activa</label>
-        <input type="checkbox" id="esPolizaActiva" ng-model="vm.esPolizaActiva" class="form-check-input col-xs-6" style="width:auto">
+    <div class="form-check row form-row-m">
+        <label for="esPolizaActiva" class="form-check-label col-xs-6" style="text-align:end;cursor:pointer">Activa</label>
+        <input type="checkbox" id="esPolizaActiva" ng-model="vm.esPolizaActiva" class="form-check-input col-xs-6" style="width:auto;cursor:pointer">
     </div>
     <div class="row justify-content-center">
         <div class="col-xs-12">
             <div class="text-center">
-                <a href="ConfiguracionCotizacion" ng-click="vm.navegarAConfiguracionCotizacion()" class="btn btn-primary" style="width:100px">Volver</a>
-                <button type="button" ng-click="vm.cotizar()" class="btn btn-success" style="width:100px">Cotizar</button>
+                <a href="ConfiguracionCotizacion" ng-click="vm.navegarAConfiguracionCotizacion()" class="btn btn-primary" style="width:100px;margin-right:5px">Volver</a>
+                <button type="button" ng-click="vm.cotizar()" class="btn btn-success" style="width:100px;margin-right:5px">Cotizar</button>
             </div>
         </div>
     </div>

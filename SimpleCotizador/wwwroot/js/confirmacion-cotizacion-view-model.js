@@ -23,7 +23,7 @@ ConfirmacionCotizacionViewModel.prototype = {
                 'tipoSeguro': this.nuevaCotizacionState.tipoSeguro,
                 'formaPago': this.formaPago,
                 'fechaVencimiento': this.nuevaCotizacionState.fechaVencimiento,
-                'fechaCotizacion': this.fechaCotizacion,
+                'fechaCotizacion': this.obtenerFechaCotizacion(),
                 'activa': this.esPolizaActiva,
                 'numeroPoliza': this.numeroPoliza
             }
@@ -41,6 +41,10 @@ ConfirmacionCotizacionViewModel.prototype = {
         var offset = hoy.getTimezoneOffset();
         return new Date(hoy.valueOf() + offset * 60000);
     },
+    obtenerFechaCotizacion: function () {
+        var elementosFechaCotizacion = $('.angular-datepicker-input').val().split('/');
+        return new Date(elementosFechaCotizacion[1] + '-' + elementosFechaCotizacion[0] + '-' + elementosFechaCotizacion[2]);
+    },
     generarGUID: function () {
         function S4() {
             return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -48,7 +52,7 @@ ConfirmacionCotizacionViewModel.prototype = {
         return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
     },
     navegarAConfiguracionCotizacion: function () {
-        this.nuevaCotizacionState.fechaCotizacion = this.fechaCotizacion;
+        this.nuevaCotizacionState.fechaCotizacion = this.obtenerFechaCotizacion();
         this.nuevaCotizacionState.formaPago = this.formaPago;
         this.nuevaCotizacionState.numeroPoliza = this.numeroPoliza;
         this.nuevaCotizacionState.esPolizaActiva = this.esPolizaActiva;
