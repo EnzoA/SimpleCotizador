@@ -1,12 +1,12 @@
 ﻿<h2 class="text-center" style="padding-bottom:50px">Confirmar Cotización</h2>
-<form>
-    <div class="form-inline" style="padding-bottom:50px">
+<form class="container">
+    <div class="form-inline row">
         <label for="fechaCotizacion" class="col-xs-6" style="text-align:end">Fecha Cotización</label>
-        <datepicker id="fechaCotizacion" class="col-xs-6" style="width:auto;float:none">
+        <datepicker id="fechaCotizacion" class="col-xs-6" style="width:auto;float:none;padding-left:0">
             <input type="text" ng-model="vm.fechaCotizacion" class="form-control input-sm" />
         </datepicker>
     </div>
-    <div class="form-inline" style="padding-bottom:50px">
+    <div class="form-inline row">
         <label for="formaPago" class="col-xs-6" style="text-align:end">Forma Pago</label>
         <select id="formaPago" ng-model="vm.formaPago" class="form-control custom-select mr-sm-2 col-xs-6">
             <option value="">Seleccione</option>
@@ -15,16 +15,20 @@
             <option>Débito</option>
         </select>
     </div>
-    <div class="form-inline" style="padding-bottom:50px">
+    <div class="form-inline row">
         <label for="numeroPoliza" class="col-xs-6" style="text-align:end">Número Póliza</label>
         <input id="numeroPoliza" type="text" ng-model="vm.numeroPoliza" readonly class="form-control input-sm col-xs-6" />
     </div>
-    <div class="form-check" style="padding-bottom:50px">
-        <input type="checkbox" id="esPolizaActiva" ng-model="vm.esPolizaActiva" class="form-check-input col-xs-6">
-        <label for="esPolizaActiva" class="form-check-label">Activa</label>
+    <div class="form-check row">
+        <label for="esPolizaActiva" class="form-check-label col-xs-6" style="text-align:end">Activa</label>
+        <input type="checkbox" id="esPolizaActiva" ng-model="vm.esPolizaActiva" class="form-check-input col-xs-6" style="width:auto">
     </div>
-    <div class="form-inline">
-        <a href="ConfiguracionCotizacion" ng-click="vm.navegarAConfiguracionCotizacion()" class="btn btn-primary col-xs-6">Volver</a>
-        <button type="button" ng-click="vm.cotizar()" class="btn btn-success form-control col-xs-6">Cotizar</button>
+    <div class="row justify-content-center">
+        <div class="col-xs-12">
+            <div class="text-center">
+                <a href="ConfiguracionCotizacion" ng-click="vm.navegarAConfiguracionCotizacion()" class="btn btn-primary" style="width:100px">Volver</a>
+                <button type="button" ng-click="vm.cotizar()" class="btn btn-success" style="width:100px">Cotizar</button>
+            </div>
+        </div>
     </div>
 </form>
