@@ -6,11 +6,18 @@
     this.formaPago = nuevaCotizacionState.formaPago ? nuevaCotizacionState.formaPago : null;
     this.numeroPoliza = nuevaCotizacionState.numeroPoliza ? nuevaCotizacionState.numeroPoliza : this.generarGUID();
     this.esPolizaActiva = nuevaCotizacionState.esPolizaActiva;
+    this.error = false;
+
+    var self = this;
+    $(".modal").on('hide.bs.modal', function () {
+        self.$window.location.href = 'BusquedaCotizaciones';
+    });
 }
 
 ConfirmacionCotizacionViewModel.prototype = {
     cotizar: function () {
         var self = this;
+        self.error = false;
         var requerimiento = {
             method: 'POST',
             url: 'http://localhost:62283/simplecotizadorapi/cotizaciones',
@@ -30,10 +37,9 @@ ConfirmacionCotizacionViewModel.prototype = {
         };
         this.$http(requerimiento)
             .then(function successCallback(response) {
-                alert('Alta exitosa!');
-                self.$window.location.href = 'BusquedaCotizaciones';
+                $('.modal').modal({});
             }, function errorCallback(response) {
-                alert('Error!');
+                self.error = true;
             });
     },
     obtenerFechaUTC0: function () {
