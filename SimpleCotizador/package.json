@@ -8,6 +8,7 @@
   "dependencies": {
     "angular": "1.6.x",
     "angular-route": "^1.7.2",
-    "angular-smart-table": "^2.1.11"
+    "angular-smart-table": "^2.1.11",
+    "angularjs-datepicker": "^2.1.23"
   }
 }

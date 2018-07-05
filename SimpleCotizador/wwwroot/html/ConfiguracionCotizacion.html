@@ -1,6 +1,6 @@
 ﻿<h2 class="text-center" style="padding-bottom:50px">Configurar Cotizaci&oacute;n</h2>
 <form>
-    <div class="form-inline" style="padding-bottom:50px;">
+    <div class="form-inline" style="padding-bottom:50px">
         <label for="nombreCliente" class="col-xs-6" style="text-align:end">Cliente</label>
         <input type="text" id="nombreCliente" ng-model="vm.nombreCliente" class="form-control input-sm col-xs-6" autocomplete="off" />
     </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="form-inline" style="padding-bottom:50px;">
         <label for="fechaVencimiento" class="col-xs-6" style="text-align:end">Fecha Vencimiento</label>
-        <input type="text" id="fechaVencimiento" ng-model="vm.fechaVencimiento | date : 'dd/MM/yyyy'" disabled class="form-control input-sm col-xs-6" autocomplete="off" />
+        <input type="text" id="fechaVencimiento" ng-model="vm.fechaVencimiento | date : 'dd/MM/yyyy'" readonly class="form-control input-sm col-xs-6" autocomplete="off" />
     </div>
     <div class="form-group col-xs-2 col-xs-offset-5" style="padding-top:20px">
         <a href="ConfirmacionCotizacion" ng-click="vm.navegarAConfirmacionCotizacion()" class="btn btn-primary form-control">Siguiente</a>

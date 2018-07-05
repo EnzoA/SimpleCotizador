@@ -16,6 +16,10 @@ var dependencias = {
     },
     "angular-smart-table": {
         "dist/smart-table.js": ""
+    },
+    "angularjs-datepicker": {
+        "dist/angular-datepicker.css": "",
+        "dist/angular-datepicker.js": ""
     }
 };
 

@@ -1,7 +1,7 @@
 ﻿"use strict";
 +function () {
     angular
-        .module('indexApp', ['ngRoute', 'smart-table'])
+        .module('indexApp', ['ngRoute', 'smart-table', '720kb.datepicker'])
         .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             $routeProvider
                 .when('/BusquedaCotizaciones', { templateUrl: '/html/BusquedaCotizaciones.html', controller: 'busquedaCotizacionesController' })
