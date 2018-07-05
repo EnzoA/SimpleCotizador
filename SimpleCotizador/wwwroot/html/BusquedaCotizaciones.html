@@ -1,10 +1,10 @@
 ﻿<h2 style="padding-bottom:50px">Cotizaciones</h2>
-<form>
+<form class="container">
     <div class="form-group">
         <label for="filtro">Buscar</label>
         <div class="form-inline" style="padding:0 0 20px 0">
             <input type="text" id="filtro" ng-model="vm.filtro" ng-blur="vm.buscarCotizaciones()" ng-keydown="vm.procesarKeyPress($event)"
-                   class="form-control input-lg" autocomplete="off" />
+                   class="form-control input-sm col-xs-6 form-element" autocomplete="off" />
             <a href="ConfiguracionCotizacion" role="button" class="btn btn-primary form-control" style="width:100px;margin:0 0 0 20px">Crear</a>
         </div>
     </div>
