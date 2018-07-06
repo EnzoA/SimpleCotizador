@@ -10,27 +10,28 @@
                 .otherwise({ redirectTo: '/BusquedaCotizaciones' });
             $locationProvider.html5Mode(true);
         }])
-        .controller('menuController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
-            $scope.vm = new MenuViewModel($http, $window);
+        .controller('menuController', ['$scope', '$http', '$window', 'baseUrl', function ($scope, $http, $window, baseUrl) {
+            $scope.vm = new MenuViewModel($http, $window, baseUrl);
         }])
-        .controller('busquedaCotizacionesController', ['$scope', '$http', function ($scope, $http) {
-            $scope.vm = new BusquedaCotizacionesViewModel($http);
+        .controller('busquedaCotizacionesController', ['$scope', '$http', 'baseUrl', function ($scope, $http, baseUrl) {
+            $scope.vm = new BusquedaCotizacionesViewModel($http, baseUrl);
         }])
         .controller('configuracionCotizacionController', ['$scope', 'nuevaCotizacionState', function ($scope, nuevaCotizacionState) {
             $scope.vm = new ConfiguracionCotizacionViewModel(nuevaCotizacionState);
         }])
-        .controller('confirmacionCotizacionController', ['$scope', '$http', '$window', 'nuevaCotizacionState', function ($scope, $http, $window, nuevaCotizacionState) {
-            $scope.vm = new ConfirmacionCotizacionViewModel($http, $window, nuevaCotizacionState);
+        .controller('confirmacionCotizacionController', ['$scope', '$http', '$window', 'nuevaCotizacionState', 'baseUrl', function ($scope, $http, $window, nuevaCotizacionState, baseUrl) {
+            $scope.vm = new ConfirmacionCotizacionViewModel($http, $window, nuevaCotizacionState, baseUrl);
         }])
-        .factory('nuevaCotizacionState', function () {
-            return {
-                nombreCliente: '',
-                tipoSeguro: '',
-                fechaVencimiento: null,
-                fechaCotizacion: null,
-                formaPago: null,
-                numeroPoliza: '',
-                esPolizaActiva: true
-            };
-        });
+        .service('nuevaCotizacionState', function () {
+            this.nombreCliente = '';
+            this.tipoSeguro = '';
+            this.fechaVencimiento = null;
+            this.fechaCotizacion = null;
+            this.formaPago = null;
+            this.numeroPoliza = '';
+            this.esPolizaActiva = true;
+        })
+        .factory('baseUrl', ['$window', '$location', function ($window, $location) {
+            return new $window.URL($location.absUrl()).origin;
+        }]);
 }();

@@ -1,7 +1,8 @@
-﻿function ConfirmacionCotizacionViewModel($http, $window, nuevaCotizacionState) {
+﻿function ConfirmacionCotizacionViewModel($http, $window, nuevaCotizacionState, baseUrl) {
     this.$http = $http;
     this.$window = $window;
     this.nuevaCotizacionState = nuevaCotizacionState;
+    this.baseUrl = baseUrl;
     this.fechaCotizacion = nuevaCotizacionState.fechaCotizacion ? nuevaCotizacionState.fechaCotizacion : this.obtenerFechaUTC0();
     this.formaPago = nuevaCotizacionState.formaPago ? nuevaCotizacionState.formaPago : null;
     this.numeroPoliza = nuevaCotizacionState.numeroPoliza ? nuevaCotizacionState.numeroPoliza : this.generarGUID();
@@ -16,11 +17,10 @@
 
 ConfirmacionCotizacionViewModel.prototype = {
     cotizar: function () {
-        var self = this;
-        self.error = false;
+        this.error = false;
         var requerimiento = {
             method: 'POST',
-            url: 'http://localhost:62283/simplecotizadorapi/cotizaciones',
+            url: this.baseUrl + '/simplecotizadorapi/cotizaciones',
             headers: {
                 'Content-Type': 'application/json',
                 'Accepts': 'application/json'
@@ -35,6 +35,8 @@ ConfirmacionCotizacionViewModel.prototype = {
                 'numeroPoliza': this.numeroPoliza
             }
         };
+
+        var self = this;
         this.$http(requerimiento)
             .then(function successCallback(response) {
                 $('.modal').modal({});

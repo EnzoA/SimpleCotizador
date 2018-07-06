@@ -1,21 +1,21 @@
-﻿function BusquedaCotizacionesViewModel($http) {
+﻿function BusquedaCotizacionesViewModel($http, baseUrl) {
     this.$http = $http;
+    this.baseUrl = baseUrl;
     this.filtro = '';
     this.cotizaciones = [];
 }
 
 BusquedaCotizacionesViewModel.prototype = {
     buscarCotizaciones: function () {
-        var self = this;
-
         var requerimiento = {
             method: 'GET',
-            url: 'http://localhost:62283/simplecotizadorapi/cotizaciones?filtro=' + this.filtro,
+            url: this.baseUrl + '/simplecotizadorapi/cotizaciones?filtro=' + this.filtro,
             headers: {
                 'Accepts': 'application/json'
             }
         };
 
+        var self = this;
         this.$http(requerimiento)
             .then(function successCallback(response) {
                 self.cotizaciones = response.data;

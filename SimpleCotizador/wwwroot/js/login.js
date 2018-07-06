@@ -2,13 +2,15 @@
 +function () {
     angular
         .module('loginApp', [])
-        .controller('loginController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
-            $scope.vm = new LoginViewModel($http, $window);
+        .controller('loginController', ['$scope', '$http', '$window', '$location', function ($scope, $http, $window, $location) {
+            var baseUrl = new $window.URL($location.absUrl()).origin;
+            $scope.vm = new LoginViewModel($http, $window, baseUrl);
         }]);
 
-    function LoginViewModel($http, $window) {
+    function LoginViewModel($http, $window, baseUrl) {
         this.$http = $http;
         this.$window = $window;
+        this.baseUrl = baseUrl;
         this.usuario = '';
         this.contrasenia = '';
         this.enProgreso = false;
@@ -21,11 +23,10 @@
             this.error = false;
             this.mensajeError = '';
             this.enProgreso = true;
-            var self = this;
 
             var requerimiento = {
                 method: 'POST',
-                url: 'http://localhost:62283/simplecotizadorapi/account/login',
+                url: this.baseUrl + '/simplecotizadorapi/account/login',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accepts': 'application/json'
@@ -35,6 +36,8 @@
                     'contrasenia': this.contrasenia
                 }
             };
+
+            var self = this;
             this.$http(requerimiento)
                 .then(function successCallback(response) {
                     self.$window.location.href = '/Home/Index';
