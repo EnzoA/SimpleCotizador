@@ -11,7 +11,7 @@
 
     var self = this;
     $(".modal").on('hide.bs.modal', function () {
-        self.$window.location.href = 'BusquedaCotizaciones';
+        self.$window.location.href = 'Index/BusquedaCotizaciones';
     });
 }
 
@@ -20,7 +20,7 @@ ConfirmacionCotizacionViewModel.prototype = {
         this.error = false;
         var requerimiento = {
             method: 'POST',
-            url: this.baseUrl + '/simplecotizadorapi/cotizaciones',
+            url: this.baseUrl + 'simplecotizadorapi/cotizaciones',
             headers: {
                 'Content-Type': 'application/json',
                 'Accepts': 'application/json'

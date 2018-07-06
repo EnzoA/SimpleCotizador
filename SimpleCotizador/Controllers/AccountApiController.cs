@@ -50,7 +50,7 @@ namespace SimpleCotizador.Controllers
                 await _signInManager.SignOutAsync();
                 Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(loginRequest.Usuario,
                                                                                                              loginRequest.Contrasenia,
-                                                                                                             isPersistent: false,
+                                                                                                             isPersistent: loginRequest.Recordarme,
                                                                                                              lockoutOnFailure: false);
 
                 if (result.Succeeded)

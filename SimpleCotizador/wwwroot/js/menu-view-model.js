@@ -8,7 +8,7 @@ MenuViewModel.prototype = {
     salir: function () {
         var requerimiento = {
             method: 'POST',
-            url: this.baseUrl + '/simplecotizadorapi/account/logout',
+            url: this.baseUrl + 'simplecotizadorapi/account/logout',
             headers: {
                 'Content-Type': 'application/json',
                 'Accepts': 'application/json'

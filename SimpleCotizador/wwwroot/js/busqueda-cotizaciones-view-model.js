@@ -9,7 +9,7 @@ BusquedaCotizacionesViewModel.prototype = {
     buscarCotizaciones: function () {
         var requerimiento = {
             method: 'GET',
-            url: this.baseUrl + '/simplecotizadorapi/cotizaciones?filtro=' + this.filtro,
+            url: this.baseUrl + 'simplecotizadorapi/cotizaciones?filtro=' + this.filtro,
             headers: {
                 'Accepts': 'application/json'
             }

@@ -3,7 +3,7 @@
     angular
         .module('loginApp', [])
         .controller('loginController', ['$scope', '$http', '$window', '$location', function ($scope, $http, $window, $location) {
-            var baseUrl = new $window.URL($location.absUrl()).origin;
+            var baseUrl = new $window.URL($location.absUrl()).origin + '/';
             $scope.vm = new LoginViewModel($http, $window, baseUrl);
         }]);
 
@@ -13,6 +13,7 @@
         this.baseUrl = baseUrl;
         this.usuario = '';
         this.contrasenia = '';
+        this.recordarme = false;
         this.enProgreso = false;
         this.error = false;
         this.mensajeError = '';
@@ -26,14 +27,15 @@
 
             var requerimiento = {
                 method: 'POST',
-                url: this.baseUrl + '/simplecotizadorapi/account/login',
+                url: this.baseUrl + 'simplecotizadorapi/account/login',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accepts': 'application/json'
                 },
                 data: {
                     'usuario': this.usuario,
-                    'contrasenia': this.contrasenia
+                    'contrasenia': this.contrasenia,
+                    'recordarme': this.recordarme
                 }
             };
 

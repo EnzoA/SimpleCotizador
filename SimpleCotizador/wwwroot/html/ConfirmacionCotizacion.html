@@ -26,13 +26,13 @@
     </div>
     <div class="form-check row form-row-m">
         <label for="esPolizaActiva" class="form-check-label col-xs-6" style="text-align:end;cursor:pointer">Activa</label>
-        <input type="checkbox" id="esPolizaActiva" ng-model="vm.esPolizaActiva" class="form-check-input col-xs-6" style="width:auto;cursor:pointer">
+        <input type="checkbox" id="esPolizaActiva" ng-model="vm.esPolizaActiva" class="form-check-input col-xs-6" style="width:auto">
     </div>
     <div ng-show="vm.error" class="row justify-content-center alert alert-danger col-xs-4 col-xs-offset-4 form-row-m" style="text-align:center">Se ha producido un error</div>
     <div class="row justify-content-center">
         <div class="col-xs-12">
             <div class="text-center">
-                <a href="ConfiguracionCotizacion" ng-click="vm.navegarAConfiguracionCotizacion()" class="btn btn-primary" style="width:100px;margin-right:5px">Volver</a>
+                <a href="Index/ConfiguracionCotizacion" ng-click="vm.navegarAConfiguracionCotizacion()" class="btn btn-primary" style="width:100px;margin-right:5px">Volver</a>
                 <button type="button" ng-click="vm.cotizar()" class="btn btn-success" style="width:100px;margin-right:5px">Cotizar</button>
             </div>
         </div>

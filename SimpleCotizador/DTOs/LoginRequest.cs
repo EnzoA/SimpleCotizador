@@ -11,5 +11,8 @@ namespace SimpleCotizador.DTOs
         [Required]
         [DataType(DataType.Password)]
         public string Contrasenia { get; set; }
+
+        [Required]
+        public bool Recordarme { get; set; }
     }
 }

@@ -4,10 +4,10 @@
         .module('indexApp', ['ngRoute', 'smart-table', '720kb.datepicker'])
         .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             $routeProvider
-                .when('/BusquedaCotizaciones', { templateUrl: '/html/BusquedaCotizaciones.html', controller: 'busquedaCotizacionesController' })
-                .when('/ConfiguracionCotizacion', { templateUrl: '/html/ConfiguracionCotizacion.html', controller: 'configuracionCotizacionController' })
-                .when('/ConfirmacionCotizacion', { templateUrl: '/html/ConfirmacionCotizacion.html', controller: 'confirmacionCotizacionController' })
-                .otherwise({ redirectTo: '/BusquedaCotizaciones' });
+                .when('/Index/BusquedaCotizaciones', { templateUrl: '/html/BusquedaCotizaciones.html', controller: 'busquedaCotizacionesController' })
+                .when('/Index/ConfiguracionCotizacion', { templateUrl: '/html/ConfiguracionCotizacion.html', controller: 'configuracionCotizacionController' })
+                .when('/Index/ConfirmacionCotizacion', { templateUrl: '/html/ConfirmacionCotizacion.html', controller: 'confirmacionCotizacionController' })
+                .otherwise({ redirectTo: '/Index/BusquedaCotizaciones' });
             $locationProvider.html5Mode(true);
         }])
         .controller('menuController', ['$scope', '$http', '$window', 'baseUrl', function ($scope, $http, $window, baseUrl) {
@@ -32,6 +32,11 @@
             this.esPolizaActiva = true;
         })
         .factory('baseUrl', ['$window', '$location', function ($window, $location) {
-            return new $window.URL($location.absUrl()).origin;
+            var absoluteUrl = $location.absUrl();
+            if (absoluteUrl) {
+                return new $window.URL(absoluteUrl).origin + '/';
+            } else {
+                return window.location.href;
+            }
         }]);
 }();
